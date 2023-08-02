@@ -22,7 +22,7 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
 
   return (
     <div
-    onClick={handleClick}
+      onClick={handleClick}
       className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
     >
       {/* Images and actions */}
