@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { MouseEventHandler } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import { Expand, ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -14,7 +14,7 @@ interface ProductCard {
   data: Product;
 }
 
-const ProductCard: React.FC<ProductCard> = ({ data }) => {
+const ProductCard: FC<ProductCard> = ({ data }) => {
   const previewModal = usePreviewModal();
   const router = useRouter();
 
