@@ -31,12 +31,11 @@ const Summary: FC<SummaryProps> = ({}) => {
   }, 0);
 
   const onCheckout = async () => {
-    const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
-      { productIds: items.map((item) => item.id) }
-    );
-
-    window.location = response.data;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/checkout`;
+    const response = await axios.post(url, {
+      productIds: items.map((item) => item.id),
+    });
+    window.location = response.data.url;
   };
 
   return (
