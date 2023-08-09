@@ -12,7 +12,6 @@ interface ProductPageProps {
 }
 
 const ProductPage: FC<ProductPageProps> = async ({ params }) => {
-  console.log({ params });
   const product = await getProduct(params.productId);
 
   const suggestedProducts = await getProducts({
