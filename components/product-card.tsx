@@ -36,10 +36,14 @@ const ProductCard: FC<ProductCard> = ({ data }) => {
     cart.addItem(data);
   };
 
+  const discountPrice = String(
+    Number(data.price) - (10 / 100) * Number(data.price)
+  );
+
   return (
     <div
       onClick={handleClick}
-      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4"
+      className="bg-white group cursor-pointer rounded-xl border p-3 space-y-4 flex flex-col justify-between"
     >
       {/* Image & actions */}
       <div className="aspect-square rounded-xl bg-gray-100 relative">
@@ -63,13 +67,17 @@ const ProductCard: FC<ProductCard> = ({ data }) => {
         </div>
       </div>
       {/* Description */}
-      <div>
+      <div className="flex-1">
         <p className="font-semibold text-lg">{data.name}</p>
         <p className="text-sm text-gray-500">{data.category?.name}</p>
       </div>
       {/* Price & Reiew */}
       <div className="flex items-center justify-between">
-        <Currency value={data?.price} />
+        {data.isFeatured ? (
+          <Currency value={data?.price} lineThrough={discountPrice} />
+        ) : (
+          <Currency value={data?.price} />
+        )}
       </div>
     </div>
   );

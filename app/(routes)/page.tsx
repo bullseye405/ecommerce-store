@@ -8,7 +8,8 @@ export const revalidate = 0;
 
 const HomePage = async () => {
   const billboard = await getBillboards('20396e81-1355-47ac-885c-f8130db73447');
-  const products = await getProducts({ isFeatured: true });
+  const featuredProducts = await getProducts({ isFeatured: true });
+  const products = await getProducts({ isFeatured: false });
 
   return (
     <Container>
@@ -16,7 +17,11 @@ const HomePage = async () => {
         <Billboard data={billboard} />
 
         <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
-          <ProductList title="Featured Products" items={products} />
+          <ProductList title="Featured Products" items={featuredProducts} />
+        </div>
+
+        <div className="flex flex-col gap-y-8 px-4 sm:px-6 lg:px-8">
+          <ProductList title="Explore Products" items={products} />
         </div>
       </div>
     </Container>
