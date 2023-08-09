@@ -9,9 +9,10 @@ const formatter = new Intl.NumberFormat('en-US', {
 
 interface CurrencyProps {
   value: string | number;
+  lineThrough?: string;
 }
 
-const Currency: FC<CurrencyProps> = ({ value }) => {
+const Currency: FC<CurrencyProps> = ({ value, lineThrough }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -21,8 +22,21 @@ const Currency: FC<CurrencyProps> = ({ value }) => {
   if (!isMounted) {
     return null;
   }
-  
-  return <div className="font-semibold">{formatter.format(Number(value))}</div>;
+
+  return (
+    <div>
+      <p className="font-semibold">{formatter.format(Number(value))}</p>
+      {lineThrough && (
+        <div className="flex text-sm">
+          <p className="line-through">
+            {formatter.format(Number(lineThrough))}
+          </p>
+          &nbsp;
+          <p> -10%</p>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default Currency;
