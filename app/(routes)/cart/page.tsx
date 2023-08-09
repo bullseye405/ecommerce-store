@@ -7,9 +7,7 @@ import useCart from '@/hooks/use-cart';
 import CartItem from './components/cart-item';
 import Summary from './components/summary';
 
-interface Props {}
-
-const CartPage = (props: Props) => {
+const CartPage = () => {
   const [isMounted, setIsMounted] = useState(false);
 
   const cart = useCart();
@@ -21,6 +19,7 @@ const CartPage = (props: Props) => {
   if (!isMounted) {
     return null;
   }
+
   return (
     <div className="bg-white">
       <Container>
