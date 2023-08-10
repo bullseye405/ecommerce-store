@@ -1,4 +1,5 @@
 import { Urbanist } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 
 import { ModalProvider } from '@/providers/modal-provider';
 import { ToastProvider } from '@/providers/toast-provider';
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <Analytics />
         <ToastProvider />
         <ModalProvider />
         <Navbar />
